@@ -56,10 +56,40 @@ public class Main {
                     System.out.println(id + "번 명언이 삭제되었습니다.");
                 }
             }
+
+            if(input.contains("수정")) {
+                String[] input_arr = input.split("=");
+                int id = Integer.valueOf(input_arr[1]);
+                명언 수정명언 = null ;
+
+
+                for(int r = 0 ; r<명언저장소.size(); r++)
+                {
+                    if(id==명언저장소.get(r).getNum()) {
+                        수정명언 = 명언저장소.get(r);
+                    }
+                }
+
+                if(수정명언 ==null) {
+                    System.out.println(id+ "수정할 명언은 존재하지 않습니다.");
+                }
+                else
+                {
+                    System.out.println("명언(기존) : " + 수정명언.getFamous());
+                    System.out.print("명언 : ");
+                    String temp = sc.nextLine();
+                    수정명언.setFamous(temp);
+
+                    System.out.println("작가(기존) : " + 수정명언.getWriter());
+                    System.out.print("작가 : ");
+                    String temp2 = sc.nextLine();
+                    수정명언.setWriter(temp2);
+                }
+            }
         }
         sc.close();
+        }
     }
-}
 
     class 명언 {
         public String getFamous() {
