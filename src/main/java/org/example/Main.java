@@ -8,7 +8,23 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
 
-        if(input.equals("종료"))
-            System.out.println("명령) " + input);
+        String famous;
+        String writer;
+
+        while (true) {
+            if (input.equals("종료")) {
+                break;
+            }
+
+            if (input.equals("등록")) {
+                System.out.print("명언 : ");
+                famous = sc.nextLine();
+                System.out.print("작가 : ");
+                famous = sc.nextLine();
+                System.out.print("명령) ");
+                input = sc.nextLine();
+            }
+
+        }
     }
 }
