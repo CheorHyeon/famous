@@ -34,7 +34,7 @@ public class Main {
                 System.out.println("번호 / 작가 / 명언");
                 System.out.println(("___________________"));
                 for(int k = 명언저장소.size()-1; k>=0; k--){
-                    System.out.printf("%d / %s / %s \n", (k+1), 명언저장소.get(k).getFamous(), 명언저장소.get(k).getWriter() );
+                    System.out.printf("%d / %s / %s \n", 명언저장소.get(k).getNum(), 명언저장소.get(k).getFamous(), 명언저장소.get(k).getWriter() );
                 }
                 }
 
@@ -42,12 +42,28 @@ public class Main {
                 System.out.print("삭제?id=");
                 int id = sc.nextInt();
                 sc.nextLine();
-                명언저장소.remove(id-1);
-                System.out.print(id+ "번 명언이 삭제되었습니다.");
+                명언 삭제명언 = null ;
+
+                for(int r = 0 ; r<명언저장소.size(); r++)
+                {
+                    if(id==명언저장소.get(r).getNum()) {
+                        삭제명언 = 명언저장소.get(id);
+                    }
+                }
+
+                if(삭제명언 ==null) {
+                    System.out.println(id+ "번 명언은 존재하지 않습니다.");
+                }
+                else
+                {
+                    명언저장소.remove(삭제명언);
+                }
             }
         }
         sc.close();
+
     }
+
 }
 
 class 명언 {
@@ -61,6 +77,10 @@ class 명언 {
 
     private String famous;
     private String writer;
+
+    public int getNum() {
+        return num;
+    }
 
     private int num;
 
