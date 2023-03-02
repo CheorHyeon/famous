@@ -37,6 +37,14 @@ public class Main {
                     System.out.printf("%d / %s / %s \n", (k+1), 명언저장소.get(k).getFamous(), 명언저장소.get(k).getWriter() );
                 }
                 }
+
+            if(input.equals("삭제")) {
+                System.out.print("삭제?id=");
+                int id = sc.nextInt();
+                sc.nextLine();
+                명언저장소.remove(id-1);
+                System.out.print(id+ "번 명언이 삭제되었습니다.");
+            }
         }
         sc.close();
     }
