@@ -26,8 +26,9 @@ public class Main {
                 System.out.print("작가 : ");
                 writer = sc.nextLine();
                 명언저장소.put(count, new 명언(famous, writer));
-                System.out.println(count + "번 명언이 등록되었습니다.");
-                count++;
+                System.out.println( "1번 명언이 등록되었습니다.");
+
+                //count++;
 
             }
 
