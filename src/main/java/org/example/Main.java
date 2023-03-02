@@ -8,10 +8,10 @@ public class Main {
         String input;
 
         List<명언> 명언저장소 = new ArrayList<>();
-        int count = 1;
+        int count = 1;  // 명언 번호 변수
 
-        String famous;
-        String writer;
+        String famous;  // 명언
+        String writer;  // 작가
 
         while (true) {
             System.out.print("명령) ");
@@ -33,60 +33,67 @@ public class Main {
             if (input.equals("목록")) {
                 System.out.println("번호 / 작가 / 명언");
                 System.out.println(("___________________"));
-                for(int k = 명언저장소.size()-1; k>=0; k--){
-                    System.out.printf("%d / %s / %s \n", 명언저장소.get(k).getNum(), 명언저장소.get(k).getFamous(), 명언저장소.get(k).getWriter() );
+                for (int k = 명언저장소.size() - 1; k >= 0; k--) {
+                    System.out.printf("%d / %s / %s \n", 명언저장소.get(k).getNum(), 명언저장소.get(k).getFamous(), 명언저장소.get(k).getWriter());
                 }
-                }
+            }
 
-            if(input.equals("삭제")) {
-                System.out.print("삭제?id=");
-                int id = sc.nextInt();
-                sc.nextLine();
-                명언 삭제명언 = null ;
+            if (input.contains("삭제")) {
+                String[] input_arr = input.split("=");
+                int id = Integer.valueOf(input_arr[1]);
+                명언 삭제명언 = null;
 
-                for(int r = 0 ; r<명언저장소.size(); r++)
-                {
-                    if(id==명언저장소.get(r).getNum()) {
-                        삭제명언 = 명언저장소.get(id);
+                for (int r = 0; r < 명언저장소.size(); r++) {
+                    if (id == 명언저장소.get(r).getNum()) {
+                        삭제명언 = 명언저장소.get(r);
                     }
                 }
 
-                if(삭제명언 ==null) {
-                    System.out.println(id+ "번 명언은 존재하지 않습니다.");
-                }
-                else
-                {
+                if (삭제명언 == null) {
+                    System.out.println(id + "번 명언은 존재하지 않습니다.");
+                } else {
                     명언저장소.remove(삭제명언);
+                    System.out.println(id + "번 명언이 삭제되었습니다.");
                 }
             }
         }
         sc.close();
-
-    }
-
-}
-
-class 명언 {
-    public String getFamous() {
-        return famous;
-    }
-
-    public String getWriter() {
-        return writer;
-    }
-
-    private String famous;
-    private String writer;
-
-    public int getNum() {
-        return num;
-    }
-
-    private int num;
-
-    명언(int num, String famous, String writer) {
-        this.num = num;
-        this.famous = famous;
-        this.writer = writer;
     }
 }
+
+    class 명언 {
+        public String getFamous() {
+            return famous;
+        }
+
+        public String getWriter() {
+            return writer;
+        }
+
+        public void setFamous(String famous) {
+            this.famous = famous;
+        }
+
+        public void setWriter(String writer) {
+            this.writer = writer;
+        }
+
+        public void setNum(int num) {
+            this.num = num;
+        }
+
+        private String famous;
+        private String writer;
+
+        public int getNum() {
+            return num;
+        }
+
+        private int num;
+
+        명언(int num, String famous, String writer) {
+            this.num = num;
+            this.famous = famous;
+            this.writer = writer;
+        }
+    }
