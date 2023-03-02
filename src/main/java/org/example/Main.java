@@ -7,7 +7,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String input;
 
-        Map<Integer, 명언> 명언저장소 = new HashMap<>();
+        List<명언> 명언저장소 = new ArrayList<>();
         int count = 1;
 
         String famous;
@@ -25,22 +25,39 @@ public class Main {
                 famous = sc.nextLine();
                 System.out.print("작가 : ");
                 writer = sc.nextLine();
-                명언저장소.put(count, new 명언(famous, writer));
+                명언저장소.add(new 명언(count, famous, writer));
                 System.out.println(count + "번 명언이 등록되었습니다.");
                 count++;
-
             }
 
+            if (input.equals("목록")) {
+                System.out.println("번호 / 작가 / 명언");
+                System.out.println(("___________________"));
+                for(int k = 명언저장소.size()-1; k>=0; k--){
+                    System.out.printf("%d / %s / %s \n", (k+1), 명언저장소.get(k).getFamous(), 명언저장소.get(k).getWriter() );
+                }
+                }
         }
         sc.close();
     }
 }
 
 class 명언 {
+    public String getFamous() {
+        return famous;
+    }
+
+    public String getWriter() {
+        return writer;
+    }
+
     private String famous;
     private String writer;
 
-    명언(String famous, String writer) {
+    private int num;
+
+    명언(int num, String famous, String writer) {
+        this.num = num;
         this.famous = famous;
         this.writer = writer;
     }
